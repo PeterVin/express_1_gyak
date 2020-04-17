@@ -24,7 +24,7 @@ var userCreateHandler = function (req, res) {
         id: userid,
         username: req.body.username,
         email: req.body.email,
-        role: req.body.role,
+        role: 'user',
         password: req.body.password
     };
     users.push(user);

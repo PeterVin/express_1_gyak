@@ -6,10 +6,10 @@ const port = process.env.API_PORT || 3000;
 
 
 interface User {
-  id: number
-  username: string
-  email: string
-  role: 'admin' | 'user'
+  id: number,
+  username: string,
+  email: string,
+  role: 'admin' | 'user',
   password: string
 }
 
@@ -30,11 +30,11 @@ const userIndexHandler = (req: Request, res: Response) => {
 
 const userCreateHandler = (req: Request, res: Response) => { // /todos POST
   console.log(req.body);
-  const user = {
+  const user: User = {
     id: userid,
     username: req.body.username,
     email: req.body.email,
-    role: req.body.role,
+    role: 'user',
     password: req.body.password
   };
   users.push(user);
