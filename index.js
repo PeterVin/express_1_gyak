@@ -2,11 +2,11 @@
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-global.atob = require("atob");
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
+// const express = require('express');
 var app = express_1.default();
-var port = process.env.API_PORT || 3000;
+var port = process.env.API_PORT || 3100;
 var todos = [];
 var todoIndex = 0;
 var users = [];
@@ -69,7 +69,7 @@ var userCreateHandler = function (req, res) {
         username: req.body.username,
         email: req.body.email,
         role: 'user',
-        password: atob(req.body.password)
+        password: Buffer.from(req.body.password).toString('base64')
     };
     users.push(user);
     userid++;

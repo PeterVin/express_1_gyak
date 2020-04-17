@@ -1,10 +1,9 @@
 import express, { Request, Response } from 'express';
 // const express = require('express');
-import { Base64 } from 'js-base64';
 
 
 const app = express();
-const port = process.env.API_PORT || 3000;
+const port = process.env.API_PORT || 3100;
 
 /*let todoIndex = 0;
 let todos = [{id: todoIndex, name: 'valaki', description: 'valami', status: 'new', author: 'anonymous'}];
@@ -93,7 +92,7 @@ const userCreateHandler = (req: Request, res: Response) => { // /todos POST
     username: req.body.username,
     email: req.body.email,
     role: 'user',
-    password: atob(req.body.password)
+    password: Buffer.from(req.body.password).toString('base64')
   };
   users.push(user);
   userid++;
